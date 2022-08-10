@@ -1,4 +1,4 @@
-# iBootLoader
+# iBoot-IDA
 
 32/64 bit SecureROM/iBoot loader for IDA Pro. Supports IDA Pro 7.0+ on all platforms.
 
@@ -16,36 +16,28 @@
 ## Installation
 
 ```
-python3 -m pip install --upgrade ilstrap
-python3 -m ilstrap.installer --gh cxnder/iBootLoader
+python3 -m pip install --upgrade ilstrap unicorn
+python3 -m ilstrap.installer --gh hack-different/iBoot-IDA
 ```
-
-
-### What `ilstrap` does:
-
-ilstrap is a little thing i threw together that creates a specific folder containing dependent modules located in `loaders/ilstrap/[Loader Name]`
-
-aka, an **I**DA **L**oader boot**strap**er
-
-it then injects a line of python into the front of `ida_bootloader.py` which adds that folder to the Path
-
-that way, it can load any modules the loader depends on without requiring a package manager based setup process.
-
-this metadata is included in the ilstrap.json file which ilstrap reads.
 
 ### Manual Installation
 
-(if you dont want to use/dont trust [source is at https://github.com/cxnder/ilstrap] my lil installer framework, perfectly understandable)
-
 Steps:
 
+0. Install unicorn using the same python installation your IDA install uses.
 1. cd into your IDA directory (where ida64/ida64.exe is located)
-2. Copy `ida_ibootloader.py` into `loaders/`
-3. Copy the four folders located in `src/` to `loaders/`
+2. Copy `plugins/ida_ibootplugin.py` into `plugins/`
+3. Copy the folders in `plugin/src` into `plugins/`
+4. Copy `loaders/ida_ibootloader.py` into `loaders/`
+3. Copy the folders located in `loader/src/` to `loaders/`
 
 ---
 
 ###### Credits:
+
+Maintainer: https://github.com/cxnder
+
+AArch Sysregs plugin based on  https://github.com/TrungNguyen1909/aarch64-sysreg-ida (based on a plugin by bazad, based on a script by someone else, based on ...)
 
 this project was originally inspired by https://github.com/argp/iBoot64helper
 
